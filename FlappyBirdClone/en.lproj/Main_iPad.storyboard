@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BV1-FR-VrT">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NeT-gD-FCw"/>
+                        <viewControllerLayoutGuide type="bottom" id="mIH-YE-hof"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TzU-NZ-bCL">
+                                <rect key="frame" x="91" y="955" width="419" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3Mx-Gv-Gko"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="zed-RB-dwO"/>
+                                </connections>
+                            </slider>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v7a-Qa-a7R">
+                                <rect key="frame" x="93" y="1002" width="415" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="yXF-MF-wWS"/>
+                                </constraints>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueToothDisconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-Qf-6yW">
+                                <rect key="frame" x="20" y="955" width="55" height="55"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvE-tT-SNY">
+                                <rect key="frame" x="528" y="955" width="111" height="58"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="ah6-Kg-CKy"/>
+                                    <constraint firstAttribute="width" constant="111" id="xAA-en-wJ5"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didToggleGravity:" destination="BV1-FR-VrT" eventType="touchDown" id="uMY-iK-kCG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X74-HB-BU8">
+                                <rect key="frame" x="647" y="955" width="108" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="N2J-f9-GQn"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didToggleReverse:" destination="BV1-FR-VrT" eventType="touchDown" id="XSG-Xf-D1U"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i16-2Y-I06">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="74"/>
+                                <items>
+                                    <navigationItem prompt=" " id="rUx-Ca-WNI">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="8VN-nO-BZ3">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X3A-dp-dOk">
+                                                <rect key="frame" x="20" y="37" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <state key="normal" title="Level: "/>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="ResetButton.png" width="10" style="plain" id="05b-7g-h3Z">
+                                            <button key="customView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6IS-le-JCO">
+                                                <rect key="frame" x="640" y="17" width="108" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                                <connections>
+                                                    <action selector="didReset:" destination="BV1-FR-VrT" eventType="touchDown" id="iw2-dH-raI"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i16-2Y-I06" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="1dt-fd-l3R"/>
+                            <constraint firstItem="v7a-Qa-a7R" firstAttribute="top" secondItem="TzU-NZ-bCL" secondAttribute="bottom" constant="17" id="8Ms-EA-Ba7"/>
+                            <constraint firstItem="mvE-tT-SNY" firstAttribute="leading" secondItem="TzU-NZ-bCL" secondAttribute="trailing" constant="20" id="AjZ-dR-TNp"/>
+                            <constraint firstItem="TzU-NZ-bCL" firstAttribute="leading" secondItem="5vo-Qf-6yW" secondAttribute="trailing" constant="18" id="CNM-MY-2Ph"/>
+                            <constraint firstItem="i16-2Y-I06" firstAttribute="top" secondItem="NeT-gD-FCw" secondAttribute="bottom" id="F3s-vm-Adg"/>
+                            <constraint firstItem="5vo-Qf-6yW" firstAttribute="top" secondItem="TzU-NZ-bCL" secondAttribute="top" id="FwC-ty-Qxp"/>
+                            <constraint firstItem="5vo-Qf-6yW" firstAttribute="bottom" secondItem="mvE-tT-SNY" secondAttribute="bottom" constant="-3" id="HGH-x0-5qv"/>
+                            <constraint firstItem="X74-HB-BU8" firstAttribute="leading" secondItem="mvE-tT-SNY" secondAttribute="trailing" constant="8" symbolic="YES" id="IbK-mc-4cF"/>
+                            <constraint firstAttribute="trailing" secondItem="i16-2Y-I06" secondAttribute="trailing" id="PkC-D3-VMj"/>
+                            <constraint firstItem="mvE-tT-SNY" firstAttribute="firstBaseline" secondItem="X74-HB-BU8" secondAttribute="firstBaseline" id="UPm-Zs-2ky"/>
+                            <constraint firstItem="TzU-NZ-bCL" firstAttribute="trailing" secondItem="v7a-Qa-a7R" secondAttribute="trailing" id="Yc5-JX-Fvd"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5vo-Qf-6yW" secondAttribute="bottom" constant="14" id="Yvd-Zq-TTk"/>
+                            <constraint firstItem="mvE-tT-SNY" firstAttribute="bottom" secondItem="X74-HB-BU8" secondAttribute="bottom" id="ZWH-nB-6u1"/>
+                            <constraint firstItem="5vo-Qf-6yW" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="ckL-3k-yOP"/>
+                            <constraint firstItem="TzU-NZ-bCL" firstAttribute="leading" secondItem="v7a-Qa-a7R" secondAttribute="leading" id="ide-GP-S9y"/>
+                            <constraint firstItem="v7a-Qa-a7R" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="73" id="ihp-bF-4DE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X74-HB-BU8" secondAttribute="trailing" constant="-7" id="p8X-Mw-Xbw"/>
+                            <constraint firstItem="mvE-tT-SNY" firstAttribute="baseline" secondItem="X74-HB-BU8" secondAttribute="baseline" id="pav-Sz-KTi"/>
+                            <constraint firstAttribute="bottom" secondItem="v7a-Qa-a7R" secondAttribute="bottom" constant="20" symbolic="YES" id="pp8-tA-OCK"/>
+                            <constraint firstItem="mvE-tT-SNY" firstAttribute="top" secondItem="X74-HB-BU8" secondAttribute="top" id="w8s-bA-nJl"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bluetoothStatus" destination="5vo-Qf-6yW" id="3Od-pM-DBF"/>
+                        <outlet property="breathProgress" destination="v7a-Qa-a7R" id="DNI-Kk-Vfa"/>
+                        <outlet property="gravityButton" destination="mvE-tT-SNY" id="6Ki-WI-omZ"/>
+                        <outlet property="levelDisplay" destination="X3A-dp-dOk" id="JWe-oX-Op9"/>
+                        <outlet property="myTopNavBar" destination="i16-2Y-I06" id="iny-W2-hEr"/>
+                        <outlet property="resetButton" destination="6IS-le-JCO" id="5qj-zb-DTx"/>
+                        <outlet property="reverseButton" destination="X74-HB-BU8" id="zBD-6r-LhN"/>
+                        <outlet property="thresholdSlider" destination="TzU-NZ-bCL" id="oIn-s2-Wrk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445" y="265"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BlueToothDisconnected.png" width="58" height="58"/>
+        <image name="ResetButton.png" width="108" height="58"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <nil key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

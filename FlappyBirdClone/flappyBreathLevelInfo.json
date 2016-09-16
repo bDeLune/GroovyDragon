@@ -1,0 +1,335 @@
+
+
+
+
+
+{
+	"LevelCount": "5",
+	"levelStructure":[{
+		"speed": "1",
+		"structure":[
+                     {
+                     "GapPosition" : "0.1",
+                     "GapWidth": "75"
+                     },
+                     {
+                     "GapPosition": "0.2",
+                     "GapWidth": "100"
+                     },
+                     {
+                     "GapPosition": "0.3",
+                     "GapWidth": "75"
+                     },
+                     {
+                     "GapPosition": "0.2",
+                     "GapWidth": "100"
+                     },
+                     {
+                     "GapPosition": "0.3",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition" : "0.4",
+                     "GapWidth": "100"
+                     },
+                     {
+                     "GapPosition": "0.4",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition": "0.5",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition": "0.6",
+                     "GapWidth": "75"
+                     },
+                     {
+                     "GapPosition": "0.6",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition" : "0.7",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition": "0.8",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition": "0.7",
+                     "GapWidth": "150"
+                     },
+                     {
+                     "GapPosition": "0.8",
+                     "GapWidth": "75"
+                     },
+                     {
+                     "GapPosition": "0.9",
+                     "GapWidth": "125"
+                     }
+
+		]
+    },{
+    	"speed": "1.2",
+		"structure": [
+                      {
+                      "GapPosition" : "0.1",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.3",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition": "0.5",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.5",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition" : "0.9",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition": "0.6",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.3",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition": "0.5",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition" : "0.9",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition": "0.5",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.3",
+                      "GapWidth": "100"
+                      },
+                      {
+                      "GapPosition": "0.1",
+                      "GapWidth": "75"
+                      }
+
+ 
+		]
+    },{
+
+		"speed": "1.4",
+		"structure": [
+                      {
+                      "GapPosition" : "0.3",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition" : "0.3",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition" : "0.3",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "125"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "150"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      }
+       ]
+    },{
+		"speed": "1.8",
+		"structure": [
+                      {
+                      "GapPosition" : "0.3",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "1.0",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.3",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition" : "0.8",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.6",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.1",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "1.0",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition" : "0.3",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "75"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "75"
+                      }
+      ]
+    },{
+
+		"speed": "3.1",
+		"structure": [
+                      {
+                      "GapPosition" : "0.2",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.1",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.2",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition" : "0.9",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.1",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.8",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "1.0",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.5",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition" : "1.0",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.7",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.6",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.9",
+                      "GapWidth": "50"
+                      },
+                      {
+                      "GapPosition": "0.1",
+                      "GapWidth": "50"
+                      }
+        ]
+    }           
+	]
+}
