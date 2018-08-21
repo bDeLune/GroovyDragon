@@ -60,11 +60,14 @@ NSUserDefaults * userDefaults ;
     _thisScene.name= @"MyGameScene";
     _thisScene.thisdelegate = self;
     
+    
+ 
+    
     // Present the scene.
     float _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     
     if (_currentInhaleValue < 0.1){
-        _currentInhaleValue = .25;
+        _currentInhaleValue = .15;
     }
     
     self.thresholdSlider.value = _currentInhaleValue;
@@ -75,6 +78,14 @@ NSUserDefaults * userDefaults ;
     self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
     self.breathProgress.progress = 0;
     [self.levelDisplay setTitle: [NSString stringWithFormat: @"Level: 1"] forState:UIControlStateNormal];
+    
+   // [self.myTopNavBar setBackgroundColor: [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0]];
+    //self.myTopNavBar.barTintColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
+    [self.myTopNavBar setBackgroundImage:[UIImage new]
+                             forBarMetrics:UIBarMetricsDefault];
+    self.myTopNavBar.shadowImage = [UIImage new];
+    self.myTopNavBar.translucent = YES;
+    
 }
 
 - (void) saveFloatToUserDefaults:(float)x forKey:(NSString *)key {
@@ -176,10 +187,13 @@ NSUserDefaults * userDefaults ;
 
 - (void)updateGravityButtonDG:(BOOL)value{
     
-    if (value == YES){
+    if (value == NO){
        self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-OFF.png"]]];
-    }else if (value == NO){
+        NSLog(@"SUCCESS - GRAVITY SET TO OFF");
+    }else if (value == YES){
        self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
+        NSLog(@"SUCCESS - GRAVITY SET TO ON");
+
     }
 }
 
@@ -198,7 +212,7 @@ NSUserDefaults * userDefaults ;
 
 - (void)updateLevelDG:(int)value{
     
-    NSLog(@"Update level dg");
+    NSLog(@"Update level dg to val %d", value);
     [self.levelDisplay setTitle: [NSString stringWithFormat: @"Level: %d", value] forState:UIControlStateNormal];
 }
 

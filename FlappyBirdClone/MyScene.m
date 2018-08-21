@@ -4,6 +4,9 @@
 //  Created by Matthias Gall on 10/02/14.
 //  Copyright (c) 2014 Matthias Gall. All rights reserved.
 
+
+///10/9/16
+
 #import "MyScene.h"
 #import "BTLEManager.h"
 
@@ -25,34 +28,39 @@
     SKTexture* birdTexture2;
     SKTexture* skylineTexture;
     SKTexture* groundTexture;
+    
+    NSMutableArray * _localJSONInfo;
+    NSMutableArray * _levelSpeedArray;
+    NSMutableArray * _levelPipeGapArray;
+    NSMutableArray * _levelPipePositionArray;
+    NSMutableArray * _levelPipeNoArray;
+    
+    NSMutableArray* levelInformation;
+    BOOL _disallowNextExhale;
+    BOOL _disallowNextInhale;
+    float _lowestInhaleValue;
+    float _lowestExhaleValue;
+    CGFloat _currentInhaleValue;
+    CGFloat _currentExhaleValue;
+    bool _exhaleTriggerToggle;
+    bool _reverseMode;
+    bool _firstLevelPauseAllow;
+    NSUserDefaults * userDefaults ;
+    int _currentPipeNo;
+    
+    int _totalLevelCount;
+    bool _justStarted;
+    bool firstBlow;
+    BOOL _affectedByG;
+    id thisSelf;
+    
 }
 
 @end
 
 
 //ADDED
-NSMutableArray* levelInformation;
-BOOL _disallowNextExhale = false;
-BOOL _disallowNextInhale = false;
-float _lowestInhaleValue = 1;
-float _lowestExhaleValue = 1;
-CGFloat _currentInhaleValue;
-CGFloat _currentExhaleValue;
-bool _exhaleTriggerToggle;
-bool _reverseMode;
-bool _firstLevelPauseAllow;
-NSUserDefaults * userDefaults ;
-int _currentPipeNo;
-NSMutableArray *_localJSONInfo;
-NSMutableArray *_levelSpeedArray;
-NSMutableArray *_levelPipeGapArray;
-NSMutableArray *_levelPipePositionArray;
-NSMutableArray *_levelPipeNoArray;
-int _totalLevelCount;
-bool _justStarted;
-bool firstBlow;
-BOOL _affectedByG;
-id thisSelf;
+
 
 @implementation MyScene
 
@@ -66,6 +74,13 @@ static NSInteger const kVerticalPipeGap = 100;
 -(id)initWithSize:(CGSize)size {
 
     if (self = [super initWithSize:size]) {
+        
+        _disallowNextExhale = false;
+        _disallowNextInhale = false;
+        _lowestInhaleValue = 1;
+         _lowestExhaleValue = 1;
+        
+        
         /* Setup your scene here */
         firstBlow = true;
         _justStarted = true;
@@ -77,6 +92,10 @@ static NSInteger const kVerticalPipeGap = 100;
         self.btleMager=[BTLEManager new];
         self.btleMager.delegate=self;
         [self.btleMager startWithDeviceName:@"GroovTube 2.0" andPollInterval:0.035]; //was .035
+        
+        _affectedByG = true;
+        _bird.physicsBody.affectedByGravity = YES;
+        //  _affectedByG = YES;
         
         NSError* error = nil;
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"flappyBreathLevelInfo" ofType:@".json"];
@@ -146,6 +165,10 @@ static NSInteger const kVerticalPipeGap = 100;
     if (_currentLevel == 0 || _currentLevel > 3){
         _currentLevel = 1;
     }
+    
+    
+
+    
 
     levelInformation = [self getLevels];
     NSArray *thisLevelInformation = [levelInformation objectAtIndex:_currentLevel];
@@ -153,15 +176,15 @@ static NSInteger const kVerticalPipeGap = 100;
     _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
     
     if (_currentInhaleValue < 0.1){
-        _currentInhaleValue = .25;
-        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .5");
+        _currentInhaleValue = .15;
+        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .15");
     }else{
         NSLog(@"INHALE VALUE FOUND - SET TO %f", _currentInhaleValue);
     }
     
     if (_currentExhaleValue < 0.1){
-        _currentExhaleValue = .25;
-         NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .5");
+        _currentExhaleValue = .15;
+         NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
     }else{
         NSLog(@"EXHALE VALUE FOUND - SET TO %f", _currentExhaleValue);
     }
@@ -180,6 +203,7 @@ static NSInteger const kVerticalPipeGap = 100;
     self.physicsWorld.contactDelegate = self;
     
     _skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
+    
     [self setBackgroundColor:_skyColor];
     
     _moving = [SKNode node];
@@ -254,6 +278,9 @@ static NSInteger const kVerticalPipeGap = 100;
 
 
 -(void) firstBlow {
+    
+    
+
 
     NSLog(@"Very first blow - starting pipe spawn");
     levelInformation = [self getLevels];
@@ -277,14 +304,25 @@ static NSInteger const kVerticalPipeGap = 100;
     
     _bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_bird.size.height / 2];
     _bird.physicsBody.dynamic = YES;
-    _bird.physicsBody.affectedByGravity = YES;
-    _affectedByG = YES;
+   // _bird.physicsBody.affectedByGravity = YES;
+  //  _affectedByG = YES;
     _bird.physicsBody.allowsRotation = NO;
     _bird.physicsBody.categoryBitMask = birdCategory;
     _bird.physicsBody.collisionBitMask = worldCategory | pipeCategory;
     _bird.physicsBody.contactTestBitMask = worldCategory | pipeCategory;
+    
+    if (_affectedByG == false){
+        _bird.physicsBody.affectedByGravity = NO;
+    }else{
+        _bird.physicsBody.affectedByGravity = YES;
+    }
+    
+    
+    
     [self addChild:_bird];
     
+    
+
     SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
     SKAction* delay = [SKAction waitForDuration:2.0];
     SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
@@ -639,9 +677,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     _disallowNextInhale = false;
     _disallowNextExhale = false;
     [self.thisdelegate  updateProgressBarDG:0];
-
 }
-
 
 -(void)btleManager:(BTLEManager*)manager inhaleWithValue:(float)percentOfmax{
     
@@ -722,22 +758,22 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     
     NSLog(@"bird affected by gravity?????? %d", _affectedByG);
     
-    if (_affectedByG == YES){
+    if (_affectedByG == true){
         _bird.physicsBody.affectedByGravity = NO;
-        _affectedByG = NO;
+        _affectedByG = false;
         NSLog(@"Bird no longer affected by gravity");
         [self.thisdelegate  updateGravityButtonDG: NO];
         _bird.speed =1;
-    }else if (_affectedByG == NO){
+    }else if (_affectedByG == false){
         _bird.physicsBody.affectedByGravity = YES;
-        _affectedByG = YES;
+        _affectedByG = true;
 
         [self.thisdelegate  updateGravityButtonDG: YES];
         NSLog(@"Bird affected by gravity");
-        _currentExhaleValue = 0.25;
-        _currentInhaleValue = 0.25;
+      //  _currentExhaleValue = 0.25;
+      ///  _currentInhaleValue = 0.25;
         _bird.speed =1;
-        [self.thisdelegate  passbackSliderValueDG:_currentExhaleValue];
+       // [self.thisdelegate  passbackSliderValueDG:_currentExhaleValue];
     }
 }
 

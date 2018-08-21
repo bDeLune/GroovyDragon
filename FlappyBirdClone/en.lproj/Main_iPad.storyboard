@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,7 +21,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TzU-NZ-bCL">
-                                <rect key="frame" x="91" y="955" width="419" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3Mx-Gv-Gko"/>
                                 </constraints>
@@ -29,16 +29,12 @@
                                 </connections>
                             </slider>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v7a-Qa-a7R">
-                                <rect key="frame" x="93" y="1002" width="415" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="yXF-MF-wWS"/>
                                 </constraints>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueToothDisconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-Qf-6yW">
-                                <rect key="frame" x="20" y="955" width="55" height="55"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueToothDisconnected.png" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-Qf-6yW"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvE-tT-SNY">
-                                <rect key="frame" x="528" y="955" width="111" height="58"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                 </accessibility>
@@ -51,7 +47,6 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X74-HB-BU8">
-                                <rect key="frame" x="647" y="955" width="108" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="N2J-f9-GQn"/>
                                 </constraints>
@@ -59,15 +54,14 @@
                                     <action selector="didToggleReverse:" destination="BV1-FR-VrT" eventType="touchDown" id="XSG-Xf-D1U"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i16-2Y-I06">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="74"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i16-2Y-I06">
                                 <items>
                                     <navigationItem prompt=" " id="rUx-Ca-WNI">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="8VN-nO-BZ3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X3A-dp-dOk">
+                                            <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X3A-dp-dOk">
                                                 <rect key="frame" x="20" y="37" width="170" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <fontDescription key="fontDescription" name=".SFNSDisplay-Regular" family=".SF NS Display" pointSize="26"/>
                                                 <state key="normal" title="Level: "/>
                                             </button>
                                         </barButtonItem>
@@ -86,7 +80,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="i16-2Y-I06" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="1dt-fd-l3R"/>
                             <constraint firstItem="v7a-Qa-a7R" firstAttribute="top" secondItem="TzU-NZ-bCL" secondAttribute="bottom" constant="17" id="8Ms-EA-Ba7"/>
