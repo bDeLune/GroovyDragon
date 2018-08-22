@@ -36,12 +36,6 @@
 		717AFC591D74510000E907ED /* tower (lower tube).png in Resources */ = {isa = PBXBuildFile; fileRef = 717AFC531D74510000E907ED /* tower (lower tube).png */; };
 		717AFC5B1D74702B00E907ED /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 717AFC5A1D74702B00E907ED /* none.png */; };
 		719C4A011D76E65500922673 /* GroovyDragonSplashPortraitHiRes.png in Resources */ = {isa = PBXBuildFile; fileRef = 719C4A001D76E65500922673 /* GroovyDragonSplashPortraitHiRes.png */; };
-		71A669C81D539BC500EF05BD /* mySprite0.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C51D539BC500EF05BD /* mySprite0.png */; };
-		71A669C91D539BC500EF05BD /* mySprite0.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C51D539BC500EF05BD /* mySprite0.png */; };
-		71A669CA1D539BC500EF05BD /* mySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C61D539BC500EF05BD /* mySprite1.png */; };
-		71A669CB1D539BC500EF05BD /* mySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C61D539BC500EF05BD /* mySprite1.png */; };
-		71A669CC1D539BC500EF05BD /* mySprite2.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C71D539BC500EF05BD /* mySprite2.png */; };
-		71A669CD1D539BC500EF05BD /* mySprite2.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A669C71D539BC500EF05BD /* mySprite2.png */; };
 		71AC2D361D7D6BA2009B193D /* GroovyDragonAppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AC2D271D7D6BA2009B193D /* GroovyDragonAppIcon29x29.png */; };
 		71AC2D371D7D6BA2009B193D /* GroovyDragonAppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AC2D281D7D6BA2009B193D /* GroovyDragonAppIcon40x40.png */; };
 		71AC2D381D7D6BA2009B193D /* GroovyDragonAppIcon50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AC2D291D7D6BA2009B193D /* GroovyDragonAppIcon50x50.png */; };
@@ -76,9 +70,7 @@
 		C9633FFB18AC2B0000F2E432 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9633FD018AC2AFF00F2E432 /* Foundation.framework */; };
 		C9633FFC18AC2B0000F2E432 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9633FD418AC2AFF00F2E432 /* UIKit.framework */; };
 		C963400418AC2B0000F2E432 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C963400218AC2B0000F2E432 /* InfoPlist.strings */; };
-		C963400618AC2B0000F2E432 /* FlappyBirdCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C963400518AC2B0000F2E432 /* FlappyBirdCloneTests.m */; };
-		C963401118AC32DA00F2E432 /* Bird2.png in Resources */ = {isa = PBXBuildFile; fileRef = C963400F18AC32DA00F2E432 /* Bird2.png */; };
-		C963401418AC32EC00F2E432 /* Bird1.png in Resources */ = {isa = PBXBuildFile; fileRef = C963401318AC32EC00F2E432 /* Bird1.png */; };
+		C963400618AC2B0000F2E432 /* GroovyDragonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C963400518AC2B0000F2E432 /* GroovyDragonTests.m */; };
 		C963401718AC39DD00F2E432 /* Skyline.png in Resources */ = {isa = PBXBuildFile; fileRef = C963401518AC39DD00F2E432 /* Skyline.png */; };
 		C963401818AC39DD00F2E432 /* Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = C963401618AC39DD00F2E432 /* Ground.png */; };
 		C963401B18AC4EBA00F2E432 /* Pipe2.png in Resources */ = {isa = PBXBuildFile; fileRef = C963401918AC4EBA00F2E432 /* Pipe2.png */; };
@@ -124,9 +116,6 @@
 		717AFC531D74510000E907ED /* tower (lower tube).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tower (lower tube).png"; sourceTree = "<group>"; };
 		717AFC5A1D74702B00E907ED /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		719C4A001D76E65500922673 /* GroovyDragonSplashPortraitHiRes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroovyDragonSplashPortraitHiRes.png; sourceTree = "<group>"; };
-		71A669C51D539BC500EF05BD /* mySprite0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mySprite0.png; sourceTree = "<group>"; };
-		71A669C61D539BC500EF05BD /* mySprite1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mySprite1.png; sourceTree = "<group>"; };
-		71A669C71D539BC500EF05BD /* mySprite2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mySprite2.png; sourceTree = "<group>"; };
 		71AC2D271D7D6BA2009B193D /* GroovyDragonAppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroovyDragonAppIcon29x29.png; sourceTree = "<group>"; };
 		71AC2D281D7D6BA2009B193D /* GroovyDragonAppIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroovyDragonAppIcon40x40.png; sourceTree = "<group>"; };
 		71AC2D291D7D6BA2009B193D /* GroovyDragonAppIcon50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GroovyDragonAppIcon50x50.png; sourceTree = "<group>"; };
@@ -167,9 +156,7 @@
 		C9633FF918AC2B0000F2E432 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C963400118AC2B0000F2E432 /* GroovyDragonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GroovyDragonTests-Info.plist"; sourceTree = "<group>"; };
 		C963400318AC2B0000F2E432 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C963400518AC2B0000F2E432 /* FlappyBirdCloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlappyBirdCloneTests.m; sourceTree = "<group>"; };
-		C963400F18AC32DA00F2E432 /* Bird2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bird2.png; sourceTree = "<group>"; };
-		C963401318AC32EC00F2E432 /* Bird1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bird1.png; sourceTree = "<group>"; };
+		C963400518AC2B0000F2E432 /* GroovyDragonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroovyDragonTests.m; sourceTree = "<group>"; };
 		C963401518AC39DD00F2E432 /* Skyline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Skyline.png; sourceTree = "<group>"; };
 		C963401618AC39DD00F2E432 /* Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ground.png; sourceTree = "<group>"; };
 		C963401918AC4EBA00F2E432 /* Pipe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pipe2.png; sourceTree = "<group>"; };
@@ -226,8 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				71AC2D491D7D71CB009B193D /* GroovyDragon.entitlements */,
-				C9633FD818AC2AFF00F2E432 /* FlappyBirdClone */,
-				C9633FFF18AC2B0000F2E432 /* FlappyBirdCloneTests */,
+				C9633FD818AC2AFF00F2E432 /* GroovyDragon */,
+				C9633FFF18AC2B0000F2E432 /* GroovyDragonTests */,
 				C9633FCF18AC2AFF00F2E432 /* Frameworks */,
 				C9633FCE18AC2AFF00F2E432 /* Products */,
 			);
@@ -256,7 +243,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C9633FD818AC2AFF00F2E432 /* FlappyBirdClone */ = {
+		C9633FD818AC2AFF00F2E432 /* GroovyDragon */ = {
 			isa = PBXGroup;
 			children = (
 				71273AA31D5879B40024E107 /* btlemanager */,
@@ -271,7 +258,7 @@
 				C9633FF218AC2B0000F2E432 /* Images.xcassets */,
 				C9633FD918AC2AFF00F2E432 /* Supporting Files */,
 			);
-			path = FlappyBirdClone;
+			path = GroovyDragon;
 			sourceTree = "<group>";
 		};
 		C9633FD918AC2AFF00F2E432 /* Supporting Files */ = {
@@ -314,11 +301,6 @@
 				C963401618AC39DD00F2E432 /* Ground.png */,
 				71273AB91D58DEFF0024E107 /* BlueToothConnected.png */,
 				71273ABA1D58DEFF0024E107 /* BlueToothDisconnected.png */,
-				C963401318AC32EC00F2E432 /* Bird1.png */,
-				71A669C51D539BC500EF05BD /* mySprite0.png */,
-				71A669C61D539BC500EF05BD /* mySprite1.png */,
-				71A669C71D539BC500EF05BD /* mySprite2.png */,
-				C963400F18AC32DA00F2E432 /* Bird2.png */,
 				C9633FDA18AC2AFF00F2E432 /* GroovyDragon-Info.plist */,
 				C9633FDB18AC2AFF00F2E432 /* InfoPlist.strings */,
 				C9633FDE18AC2AFF00F2E432 /* main.m */,
@@ -327,13 +309,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9633FFF18AC2B0000F2E432 /* FlappyBirdCloneTests */ = {
+		C9633FFF18AC2B0000F2E432 /* GroovyDragonTests */ = {
 			isa = PBXGroup;
 			children = (
-				C963400518AC2B0000F2E432 /* FlappyBirdCloneTests.m */,
+				C963400518AC2B0000F2E432 /* GroovyDragonTests.m */,
 				C963400018AC2B0000F2E432 /* Supporting Files */,
 			);
-			path = FlappyBirdCloneTests;
+			path = GroovyDragonTests;
 			sourceTree = "<group>";
 		};
 		C963400018AC2B0000F2E432 /* Supporting Files */ = {
@@ -437,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C963401718AC39DD00F2E432 /* Skyline.png in Resources */,
-				71A669C81D539BC500EF05BD /* mySprite0.png in Resources */,
 				71273ABB1D58DEFF0024E107 /* BlueToothConnected.png in Resources */,
 				71AC2D431D7D6BA2009B193D /* GroovyDragonAppIcon167x167.png in Resources */,
 				71273AB11D5879B40024E107 /* bluetoothoff.png in Resources */,
@@ -455,8 +436,6 @@
 				71AC2D3E1D7D6BA2009B193D /* GroovyDragonAppIcon100x100.png in Resources */,
 				C963401C18AC4EBA00F2E432 /* Pipe1.png in Resources */,
 				C963401B18AC4EBA00F2E432 /* Pipe2.png in Resources */,
-				C963401118AC32DA00F2E432 /* Bird2.png in Resources */,
-				71A669CC1D539BC500EF05BD /* mySprite2.png in Resources */,
 				7145851F1D6F3C7E0084FC91 /* ResetButton.png in Resources */,
 				7145851B1D6F3C7E0084FC91 /* EXHALEButton.png in Resources */,
 				71AC2D3C1D7D6BA2009B193D /* GroovyDragonAppIcon76x76.png in Resources */,
@@ -473,12 +452,10 @@
 				717AFC561D74510000E907ED /* Flag (upper tube).png in Resources */,
 				7145851E1D6F3C7E0084FC91 /* INHALEButton.png in Resources */,
 				C9633FE618AC2AFF00F2E432 /* Main_iPhone.storyboard in Resources */,
-				C963401418AC32EC00F2E432 /* Bird1.png in Resources */,
 				717AFC571D74510000E907ED /* floor.png in Resources */,
 				71AC2D3B1D7D6BA2009B193D /* GroovyDragonAppIcon72x72.png in Resources */,
 				71273ABD1D58DEFF0024E107 /* BlueToothDisconnected.png in Resources */,
 				711D3C591D79CEC4002AFE9F /* tower (lower tube)-EXTENDED1.png in Resources */,
-				71A669CA1D539BC500EF05BD /* mySprite1.png in Resources */,
 				717AFC591D74510000E907ED /* tower (lower tube).png in Resources */,
 				C9633FDD18AC2AFF00F2E432 /* InfoPlist.strings in Resources */,
 				717AFC551D74510000E907ED /* dragon wings up.png in Resources */,
@@ -493,12 +470,9 @@
 			files = (
 				71273ABC1D58DEFF0024E107 /* BlueToothConnected.png in Resources */,
 				C963400418AC2B0000F2E432 /* InfoPlist.strings in Resources */,
-				71A669CB1D539BC500EF05BD /* mySprite1.png in Resources */,
 				71273AB21D5879B40024E107 /* bluetoothoff.png in Resources */,
-				71A669C91D539BC500EF05BD /* mySprite0.png in Resources */,
 				71273ABE1D58DEFF0024E107 /* BlueToothDisconnected.png in Resources */,
 				71273AB01D5879B40024E107 /* bluetooth.png in Resources */,
-				71A669CD1D539BC500EF05BD /* mySprite2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +498,7 @@
 			files = (
 				71273AB41D5879B40024E107 /* BTLEManager.m in Sources */,
 				71273AB81D5879B40024E107 /* NSData+NSData_Conversion.m in Sources */,
-				C963400618AC2B0000F2E432 /* FlappyBirdCloneTests.m in Sources */,
+				C963400618AC2B0000F2E432 /* GroovyDragonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,11 +648,11 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBirdClone/GroovyDragon-Prefix.pch";
-				INFOPLIST_FILE = "FlappyBirdClone/GroovyDragon-Info.plist";
+				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
+				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FlappyBirdClone/btlemanager",
+					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
 				);
 				"OTHER_CFLAGS[arch=*]" = "-fembed-bitcode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.audiorhoon.groovydragon;
@@ -701,11 +675,11 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBirdClone/GroovyDragon-Prefix.pch";
-				INFOPLIST_FILE = "FlappyBirdClone/GroovyDragon-Info.plist";
+				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
+				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FlappyBirdClone/btlemanager",
+					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
 				);
 				"OTHER_CFLAGS[arch=*]" = "-fembed-bitcode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.audiorhoon.groovydragon;
