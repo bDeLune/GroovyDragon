@@ -695,22 +695,22 @@
 		C963400D18AC2B0000F2E432 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FlappyBirdClone.app/FlappyBirdClone";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GroovyDragon.app/GroovyDragon";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBirdClone/GroovyDragon-Prefix.pch";
+				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FlappyBirdCloneTests/GroovyDragonTests-Info.plist";
+				INFOPLIST_FILE = "GroovyDragonTests/GroovyDragonTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FlappyBirdClone/btlemanager",
+					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digitalbreed.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = GroovyDragon;
@@ -722,18 +722,18 @@
 		C963400E18AC2B0000F2E432 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FlappyBirdClone.app/FlappyBirdClone";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GroovyDragon.app/GroovyDragon";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlappyBirdClone/GroovyDragon-Prefix.pch";
-				INFOPLIST_FILE = "FlappyBirdCloneTests/GroovyDragonTests-Info.plist";
+				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
+				INFOPLIST_FILE = "GroovyDragonTests/GroovyDragonTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FlappyBirdClone/btlemanager",
+					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digitalbreed.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = GroovyDragon;

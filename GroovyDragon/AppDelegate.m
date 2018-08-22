@@ -1,10 +1,3 @@
-//
-//  AppDelegate.m
-//  FlappyBirdClone
-//
-//  Created by Matthias Gall on 10/02/14.
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-//
 
 #import "AppDelegate.h"
 
@@ -13,8 +6,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-     //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft];
+    //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft];
     
     return YES;
 }

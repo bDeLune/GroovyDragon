@@ -1,12 +1,3 @@
-//  MyScene.m
-//  FlappyBirdClone
-//
-//  Created by Matthias Gall on 10/02/14.
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-
-
-///10/9/16
-
 #import "MyScene.h"
 #import "BTLEManager.h"
 
@@ -53,14 +44,8 @@
     bool firstBlow;
     BOOL _affectedByG;
     id thisSelf;
-    
 }
-
 @end
-
-
-//ADDED
-
 
 @implementation MyScene
 
@@ -68,9 +53,9 @@ static const uint32_t birdCategory = 1 << 0;
 static const uint32_t worldCategory = 1 << 1;
 static const uint32_t pipeCategory = 1 << 2;
 static const uint32_t scoreCategory = 1 << 3;
-
 static NSInteger const kVerticalPipeGap = 100;
 
+//INITIALISE FIRST LEVEL WITH JSON///
 -(id)initWithSize:(CGSize)size {
 
     if (self = [super initWithSize:size]) {
@@ -78,10 +63,8 @@ static NSInteger const kVerticalPipeGap = 100;
         _disallowNextExhale = false;
         _disallowNextInhale = false;
         _lowestInhaleValue = 1;
-         _lowestExhaleValue = 1;
+        _lowestExhaleValue = 1;
         
-        
-        /* Setup your scene here */
         firstBlow = true;
         _justStarted = true;
         _levelPipeGapArray = [[NSMutableArray alloc] init];
@@ -95,7 +78,6 @@ static NSInteger const kVerticalPipeGap = 100;
         
         _affectedByG = true;
         _bird.physicsBody.affectedByGravity = YES;
-        //  _affectedByG = YES;
         
         NSError* error = nil;
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"flappyBreathLevelInfo" ofType:@".json"];
@@ -111,7 +93,6 @@ static NSInteger const kVerticalPipeGap = 100;
         
         NSMutableDictionary *structure = [json valueForKey:@"levelStructure"];
         _totalLevelCount = (int)[json[@"LevelCount"] integerValue];
-        
         NSLog(@"levelcount : %d", _totalLevelCount);
         
         [_levelSpeedArray addObject:@"Nothing Here"];
@@ -147,7 +128,7 @@ static NSInteger const kVerticalPipeGap = 100;
             i++;
         }
         
-            [self createLevel];
+        [self createLevel];
         
         return self;
     }
@@ -156,7 +137,7 @@ static NSInteger const kVerticalPipeGap = 100;
 }
 
 -(void) createLevel{
-    
+    NSLog(@"Creating level");
     int reset = 0;
     
     [self.thisdelegate updateProgressBarDG:reset];
@@ -165,16 +146,13 @@ static NSInteger const kVerticalPipeGap = 100;
     if (_currentLevel == 0 || _currentLevel > 3){
         _currentLevel = 1;
     }
-    
-    
-
-    
 
     levelInformation = [self getLevels];
     NSArray *thisLevelInformation = [levelInformation objectAtIndex:_currentLevel];
     _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
     
+    //Set threshold level value///
     if (_currentInhaleValue < 0.1){
         _currentInhaleValue = .15;
         NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .15");
@@ -184,7 +162,7 @@ static NSInteger const kVerticalPipeGap = 100;
     
     if (_currentExhaleValue < 0.1){
         _currentExhaleValue = .15;
-         NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
+        NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
     }else{
         NSLog(@"EXHALE VALUE FOUND - SET TO %f", _currentExhaleValue);
     }
@@ -194,8 +172,9 @@ static NSInteger const kVerticalPipeGap = 100;
     _firstLevelPauseAllow = true;
 
     [self.thisdelegate updateLevelDG: _currentLevel];
-    
-    _reverseMode = NO;
+    NSLog(@"_exhaleTriggerToggle %@", _exhaleTriggerToggle);
+    _exhaleTriggerToggle = true;
+    _reverseMode = YES;
     _canRestart = NO;
     _currentPipeNo = 0;
     
@@ -211,8 +190,6 @@ static NSInteger const kVerticalPipeGap = 100;
     
     _pipes = [SKNode node];
     [_moving addChild:_pipes];
-    
-    // Create ground
     
     groundTexture = [SKTexture textureWithImageNamed:@"floor.png"];
     groundTexture.filteringMode = SKTextureFilteringNearest;
@@ -279,9 +256,6 @@ static NSInteger const kVerticalPipeGap = 100;
 
 -(void) firstBlow {
     
-    
-
-
     NSLog(@"Very first blow - starting pipe spawn");
     levelInformation = [self getLevels];
     NSArray *thisLevelInformation = [levelInformation objectAtIndex:_currentLevel];
@@ -304,8 +278,8 @@ static NSInteger const kVerticalPipeGap = 100;
     
     _bird.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_bird.size.height / 2];
     _bird.physicsBody.dynamic = YES;
-   // _bird.physicsBody.affectedByGravity = YES;
-  //  _affectedByG = YES;
+    //_bird.physicsBody.affectedByGravity = YES;
+    // _affectedByG = YES;
     _bird.physicsBody.allowsRotation = NO;
     _bird.physicsBody.categoryBitMask = birdCategory;
     _bird.physicsBody.collisionBitMask = worldCategory | pipeCategory;
@@ -317,12 +291,8 @@ static NSInteger const kVerticalPipeGap = 100;
         _bird.physicsBody.affectedByGravity = YES;
     }
     
-    
-    
     [self addChild:_bird];
     
-    
-
     SKAction* spawn = [SKAction performSelector:@selector(spawnPipes) onTarget:self];
     SKAction* delay = [SKAction waitForDuration:2.0];
     SKAction* spawnThenDelay = [SKAction sequence:@[spawn, delay]];
@@ -407,10 +377,8 @@ static NSInteger const kVerticalPipeGap = 100;
     _currentPipeNo++;
             
         }else{
-        
             NSLog(@"all pipes created");
         }
-        
     }
 }
 
@@ -423,7 +391,6 @@ static NSInteger const kVerticalPipeGap = 100;
     [self.thisdelegate updateLevelDG:_currentLevel];
     
     NSNumber* levelSpeed = [_levelSpeedArray objectAtIndex:_currentLevel];
-    //NSNumber* levelSpeed = [thisLevelInformation objectAtIndex:7];
     CGFloat levelSpeedFloat = [levelSpeed floatValue];
     
     // Reset bird properties
@@ -477,6 +444,7 @@ static NSInteger const kVerticalPipeGap = 100;
     _scoreLabelNode.text = [NSString stringWithFormat:@"%ld", (long)_score];
 }
 
+//DRAGON MOVEMENT AND COLLISION SETTINGS (TOUCH)///
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -520,7 +488,11 @@ static NSInteger const kVerticalPipeGap = 100;
     }
 }
 
+//DRAGON MOVEMENT AND COLLISION SETTINGS (BLOW)///
+
 -(void)recievedBlow:(NSString*)type{
+    
+    NSLog(@"recieved blow");
    
     if (firstBlow == true){
         _scoreLabelNode.text = [NSString stringWithFormat:@""];
@@ -612,10 +584,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     int newsum = sum;
     NSNumber *noOfPipesInLevel = [NSNumber numberWithInt:newsum];
    
+    //if moving
     if( _moving.speed > 0 ) {
         if( ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory ) {
-            // Bird has contact with score entity
-            
+    
             _score++;
              NSNumber *myNum = @(_score);
     
@@ -625,7 +597,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
                      _moving.speed = 0;
                     _scoreLabelNode.text = [NSString stringWithFormat:@"Game Over - You Win!"];
                      _currentLevel = 1;
-                    
                 }else{
                     _moving.speed = 0;
                     _scoreLabelNode.text = [NSString stringWithFormat:@"Level %d Passed!", _currentLevel];
@@ -643,7 +614,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
                      _canRestart = YES;
                 }]]] withKey:@"flash"];
             }else{
-                //Add a little visual feedback for the score increment
+                //Add score to top
                  _scoreLabelNode.text = [NSString stringWithFormat:@"%@/%@", myNum, noOfPipesInLevel];
                 [_scoreLabelNode runAction:[SKAction sequence:@[[SKAction scaleTo:1.5 duration:0.1], [SKAction scaleTo:1.0 duration:0.1]]]];
             }
@@ -670,10 +641,11 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     }
 }
 
-///ADDED BLUETOOTH STUFF////
+///BLUETOOTH////
 
 -(void)btleManagerBreathStopped:(BTLEManager *)manager
 {
+    //Stop all interaction
     _disallowNextInhale = false;
     _disallowNextExhale = false;
     [self.thisdelegate  updateProgressBarDG:0];
@@ -681,24 +653,25 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)btleManager:(BTLEManager*)manager inhaleWithValue:(float)percentOfmax{
     
-    if (percentOfmax < _lowestInhaleValue){
-        _lowestInhaleValue = percentOfmax;
-    }
+    if (percentOfmax < _lowestInhaleValue){ _lowestInhaleValue = percentOfmax;}
     
-    if (percentOfmax > (_lowestInhaleValue + 0.03)){
-        [self.thisdelegate  updateProgressBarDG:0];
-    }
+    if (percentOfmax > (_lowestInhaleValue + 0.03)){ [self.thisdelegate  updateProgressBarDG:0];}
     
-    if (percentOfmax <= _currentInhaleValue){
-        _disallowNextInhale = false;}
+    //float calibratedExhaleVal = percentOfmax;
+    if (percentOfmax <= _currentInhaleValue){ _disallowNextInhale = false;}
     
     float percentageValue = percentOfmax /_currentInhaleValue;
+    
+    //NSLog(@"percentageValue %f", percentageValue);
+    //NSLog(@"percentOfmax %f", percentOfmax);
+    //NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
 
+    //if inhale is on, update progress bar
     if (_reverseMode == NO || _bird.physicsBody.affectedByGravity == NO){
-        [self.thisdelegate  updateProgressBarDG:percentageValue];
+        [self.thisdelegate updateProgressBarDG:percentageValue];
     }
     
-    if (percentOfmax >= _currentInhaleValue && _reverseMode == NO){     ///REMOVED  && _disallowNextInhale == false
+    if (percentOfmax >= _currentInhaleValue && _reverseMode == NO){     ///added && _disallowNextInhale == false
         _disallowNextInhale = true;
         [self recievedBlow:@"Inhale"];
     } else if (percentOfmax >= _currentExhaleValue && _bird.physicsBody.affectedByGravity == NO){
@@ -709,16 +682,12 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)btleManager:(BTLEManager*)manager exhaleWithValue:(float)percentOfmax
 {
+    if (percentOfmax < _lowestExhaleValue){ _lowestExhaleValue = percentOfmax; }
     
-    if (percentOfmax < _lowestExhaleValue){
-        _lowestExhaleValue = percentOfmax;
-    }
+    if (percentOfmax < (_lowestExhaleValue + 0.01)){ [self.thisdelegate  updateProgressBarDG:0];}
     
-    if (percentOfmax < (_lowestExhaleValue + 0.01)){
-        [self.thisdelegate  updateProgressBarDG:0];
-    }
-    
-    float percentageValue = percentOfmax /_currentExhaleValue;
+    float calibratedExhaleVal = percentOfmax;
+    float percentageValue = calibratedExhaleVal /_currentExhaleValue;
     
     if (_reverseMode == YES || _bird.physicsBody.affectedByGravity == NO){
         [self.thisdelegate  updateProgressBarDG:percentageValue];
@@ -727,6 +696,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     if (percentOfmax <= _currentExhaleValue){
         _disallowNextExhale = false;
     }
+    
+    NSLog(@"percentageValue %f", percentageValue);
+    NSLog(@"percentOfmax %f", percentOfmax);
+    NSLog(@"_currentExhaleValue %f", _currentExhaleValue);
     
     if (percentOfmax >= _currentExhaleValue && _reverseMode == YES){
         _disallowNextExhale = true;
@@ -738,19 +711,16 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 }
 
 -(void)btleManagerConnected:(BTLEManager*)manager{
-
     NSLog(@"CONNECTED!!!!!!!");
-    [self passToBluetoothUI: YES];}
+   [self passToBluetoothUI: YES];
+}
 
 -(void)btleManagerDisconnected:(BTLEManager*)manager{
-    
-     NSLog(@"DISCONNECTED!!!!!!!");
-  [self passToBluetoothUI: NO];
+   NSLog(@"DISCONNECTED!!!!!!!");
+   [self passToBluetoothUI: NO];
 }
 
 -(void)passToBluetoothUI:(BOOL)value{
-    
-    ///NSLog(@"TRYING TO PASS TO UI");
     [self.thisdelegate updateBluetoothButtonDG:value];
 }
 
@@ -770,10 +740,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
         [self.thisdelegate  updateGravityButtonDG: YES];
         NSLog(@"Bird affected by gravity");
-      //  _currentExhaleValue = 0.25;
-      ///  _currentInhaleValue = 0.25;
+        //_currentExhaleValue = 0.25;
+        //_currentInhaleValue = 0.25;
         _bird.speed =1;
-       // [self.thisdelegate  passbackSliderValueDG:_currentExhaleValue];
+        //[self.thisdelegate  passbackSliderValueDG:_currentExhaleValue];
     }
 }
 
@@ -782,20 +752,17 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     if (_reverseMode == YES){
         [self.thisdelegate  passbackSliderValueDG:_currentInhaleValue];
         [self.thisdelegate  updateReverseButtonDG:YES];
-        NSLog(@"Reverse mode toggled to: Inhale %f", _currentInhaleValue);
+        NSLog(@"Reverse mode toggled to Inhale @ %f", _currentInhaleValue);
         _exhaleTriggerToggle = false;
         _reverseMode = NO;
         _bird.speed =1;
-
-
     }else if (_reverseMode == NO){
         [self.thisdelegate  passbackSliderValueDG:_currentExhaleValue];
         [self.thisdelegate  updateReverseButtonDG:NO];
         _exhaleTriggerToggle = true;
         _reverseMode = YES;
-        NSLog(@"Reverse mode toggled to: Exhale %f", _currentExhaleValue);
+        NSLog(@"Reverse mode toggled to Exhale @ %f", _currentExhaleValue);
         _bird.speed =1;
-
     }
     
     [self.thisdelegate  updateProgressBarDG:0];
@@ -808,6 +775,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     NSLog(@"Reset scene manually");
 }
 
+//SAVE THRESHOLD PREFERENCE//
 - (void)moveSlider: (float) value{
 
     if (_exhaleTriggerToggle == true) {
@@ -837,6 +805,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     return [userDefaults floatForKey:key];
 }
 
+//DEFAULT LEVEL INFORMATION//
 - (NSMutableArray*) getLevels{
 
     NSLog(@"Retrieving level information");

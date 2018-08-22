@@ -1,17 +1,9 @@
-//
-//  ViewController.m
-//  FlappyBirdClone
-//
-//  Created by Matthias Gall on 10/02/14.
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-//
 #import <objc/message.h>
 #import "ViewController.h"
 
 @implementation ViewController
 
 //MyScene * thisScene;
-
 NSMutableArray *_localJSONInfo;
 NSMutableArray *_levelSpeedArray;
 NSMutableArray *_levelPipeGapArray;
@@ -20,23 +12,17 @@ NSNumber *_totalLevelCount;
 bool _justloaded = true;
 NSUserDefaults * userDefaults ;
 
-- (void)viewWillAppear{
-
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSLog(@"ViewController loaded");
-
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = NO;
     skView.showsNodeCount = NO;
     self.myTopNavBar.clipsToBounds = YES;
- 
+
     NSLog(@"skView.bounds.size %@", self.view);
     printf("1.skView.bounds.size = %.2f, %.2f\n", skView.bounds.size.width, skView.bounds.size.height);
-     printf("1.skView.bounds.size = %.2f, %.2f\n", skView.bounds.size.width, skView.bounds.size.height);
  
     NSLog(@"Splashing");
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
@@ -46,24 +32,22 @@ NSUserDefaults * userDefaults ;
                                 animated:YES];
   
     int currOrient = [[UIDevice currentDevice] orientation];
-   CGSize mysize = skView.bounds.size;
+    CGSize mysize = skView.bounds.size;
     
+    //load scene based on orientation
     if (currOrient == 1 || currOrient == 2){
          mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
         NSLog(@"inverting mysize");
         NSLog(@"curr width %f",mysize.width);
         NSLog(@"curr height %f",mysize.height );
     }
-        
+    
+    //Present the scene.
     _thisScene = [MyScene sceneWithSize:mysize];
     _thisScene.scaleMode = SKSceneScaleModeAspectFill;
     _thisScene.name= @"MyGameScene";
     _thisScene.thisdelegate = self;
     
-    
- 
-    
-    // Present the scene.
     float _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     
     if (_currentInhaleValue < 0.1){
@@ -74,18 +58,17 @@ NSUserDefaults * userDefaults ;
   
     [skView presentScene:_thisScene];
     self.resetButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
-    self.reverseButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"INHALEButton.png"]]];
+    self.reverseButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EXHALEButton.png"]]];
     self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
     self.breathProgress.progress = 0;
     [self.levelDisplay setTitle: [NSString stringWithFormat: @"Level: 1"] forState:UIControlStateNormal];
     
-   // [self.myTopNavBar setBackgroundColor: [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0]];
+    //[self.myTopNavBar setBackgroundColor: [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0]];
     //self.myTopNavBar.barTintColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self.myTopNavBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
     self.myTopNavBar.shadowImage = [UIImage new];
     self.myTopNavBar.translucent = YES;
-    
 }
 
 - (void) saveFloatToUserDefaults:(float)x forKey:(NSString *)key {
@@ -96,16 +79,9 @@ NSUserDefaults * userDefaults ;
     [userDefaults synchronize];
 }
 
-
 -(float) loadFloatFromUserDefaultsForKey:(NSString *)key {
     userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults floatForKey:key];
-}
-
-
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -116,23 +92,15 @@ NSUserDefaults * userDefaults ;
             } else {
         return UIInterfaceOrientationMaskAll;
     }
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return NO; //ADDED
 }
 
 -(BOOL)shouldAutomaticallyForwardRotationMethods:(UIInterfaceOrientation)toInterfaceOrientation{
-
     return YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 -(BOOL)shouldAutorotate
@@ -140,41 +108,33 @@ NSUserDefaults * userDefaults ;
     return YES;
 }
 
-
 - (IBAction)sliderChanged:(id)sender {
-    
     UISlider *slider = (UISlider *)sender;
     [_thisScene moveSlider: [slider value]];
 }
 
 - (IBAction)didReset:(id)sender {
-    
    [_thisScene manualReset];
 }
 
 - (IBAction)didToggleGravity:(id)sender {
-    
    [_thisScene toggleAffectedByGravity];
 }
 
-
 - (IBAction)didToggleReverse:(id)sender {
-    
-    NSLog(@"trying to toggle re4veres mode");
+    NSLog(@"trying to toggle reverse mode");
     [_thisScene toggleReverseMode];
 }
 
 - (void)passbackSliderValueDG:(float)value{
     self.thresholdSlider.value = value;
-     NSLog(@"THRESHOLD SLIDER value should have been changed to %f", value);
+    NSLog(@"THRESHOLD SLIDER value should have been changed to %f", value);
 }
-
 
 - (void)changeThresholdSliderValue:(float)value{
     self.thresholdSlider.value = value;
     NSLog(@"THRESHOLD SLIDER value should have been changed to %f", value);
 }
-
 
 - (void)updateReverseButtonDG:(BOOL)value{
     
@@ -193,7 +153,6 @@ NSUserDefaults * userDefaults ;
     }else if (value == YES){
        self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
         NSLog(@"SUCCESS - GRAVITY SET TO ON");
-
     }
 }
 
@@ -206,12 +165,10 @@ NSUserDefaults * userDefaults ;
 }
 
 - (void)updateProgressBarDG:(float)value{
-
     self.breathProgress.progress = value;
 }
 
 - (void)updateLevelDG:(int)value{
-    
     NSLog(@"Update level dg to val %d", value);
     [self.levelDisplay setTitle: [NSString stringWithFormat: @"Level: %d", value] forState:UIControlStateNormal];
 }

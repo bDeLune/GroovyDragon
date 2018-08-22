@@ -1,18 +1,10 @@
-//
-//  FlappyBirdCloneTests.m
-//  FlappyBirdCloneTests
-//
-//  Created by Matthias Gall on 10/02/14.
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-//
-
 ///#import <XCTest/XCTest.h>
 
-//@interface FlappyBirdCloneTests : XCTestCase
+//@interface GroovyDragonTests : XCTestCase
 
 //@end
 
-//@implementation FlappyBirdCloneTests
+//@implementation GroovyDragonTests
 ///
 //- (void)setUp
 //{

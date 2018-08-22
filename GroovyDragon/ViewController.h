@@ -1,11 +1,3 @@
-//
-//  ViewController.h
-//  FlappyBirdClone
-//
-
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import "MyScene.h"
@@ -24,9 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *gravityButton;
 @property (weak, nonatomic) IBOutlet UIButton *reverseButton;
 @property (weak, nonatomic) IBOutlet UIImageView *bluetoothStatus;
-
 @property (nonatomic, retain) MyScene * thisScene;
-
 
 - (IBAction)didReset:(id)sender;
 - (IBAction)didToggleReverse:(id)sender;

@@ -1,9 +1,3 @@
-//
-//  MyScene.h
-//  FlappyBirdClone
-//
-//  Copyright (c) 2014 Matthias Gall. All rights reserved.
-//
 #import "BTLEManager.h"
 #import <SpriteKit/SpriteKit.h>
 
