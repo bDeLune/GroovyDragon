@@ -51,7 +51,7 @@ NSUserDefaults * userDefaults ;
     float _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     
     if (_currentInhaleValue < 0.1){
-        _currentInhaleValue = .15;
+        _currentInhaleValue = .50;
     }
     
     self.thresholdSlider.value = _currentInhaleValue;

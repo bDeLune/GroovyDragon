@@ -154,14 +154,14 @@ static NSInteger const kVerticalPipeGap = 100;
     
     //Set threshold level value///
     if (_currentInhaleValue < 0.1){
-        _currentInhaleValue = .15;
+        _currentInhaleValue = .50;
         NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .15");
     }else{
         NSLog(@"INHALE VALUE FOUND - SET TO %f", _currentInhaleValue);
     }
     
     if (_currentExhaleValue < 0.1){
-        _currentExhaleValue = .15;
+        _currentExhaleValue = .5;
         NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
     }else{
         NSLog(@"EXHALE VALUE FOUND - SET TO %f", _currentExhaleValue);
@@ -172,7 +172,6 @@ static NSInteger const kVerticalPipeGap = 100;
     _firstLevelPauseAllow = true;
 
     [self.thisdelegate updateLevelDG: _currentLevel];
-    NSLog(@"_exhaleTriggerToggle %@", _exhaleTriggerToggle);
     _exhaleTriggerToggle = true;
     _reverseMode = YES;
     _canRestart = NO;
@@ -249,8 +248,8 @@ static NSInteger const kVerticalPipeGap = 100;
     _scoreLabelNode.text = [NSString stringWithFormat:@"Ready? Blow/Tap to go!"];
     [self addChild:_scoreLabelNode];
     
-    [self.thisdelegate passbackSliderValueDG:_currentInhaleValue];
-    [self.thisdelegate changeThresholdSliderValue:_currentInhaleValue];
+    [self.thisdelegate passbackSliderValueDG:_currentExhaleValue];
+    [self.thisdelegate changeThresholdSliderValue:_currentExhaleValue];
 }
 
 
@@ -653,17 +652,22 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)btleManager:(BTLEManager*)manager inhaleWithValue:(float)percentOfmax{
     
+    
+    float calibratedInhaleVal = _currentInhaleValue*.5;
+    //NSLog(@"old inhale val : %f", _currentInhaleValue);
+    //NSLog(@"new inhale val : %f", calibratedInhaleVal);
+
     if (percentOfmax < _lowestInhaleValue){ _lowestInhaleValue = percentOfmax;}
     
     if (percentOfmax > (_lowestInhaleValue + 0.03)){ [self.thisdelegate  updateProgressBarDG:0];}
     
     //float calibratedExhaleVal = percentOfmax;
-    if (percentOfmax <= _currentInhaleValue){ _disallowNextInhale = false;}
+    if (percentOfmax <= calibratedInhaleVal){ _disallowNextInhale = false;}
     
-    float percentageValue = percentOfmax /_currentInhaleValue;
+    float percentageValue = percentOfmax/calibratedInhaleVal;
     
-    //NSLog(@"percentageValue %f", percentageValue);
-    //NSLog(@"percentOfmax %f", percentOfmax);
+    NSLog(@"inhale percentageValue %f", percentageValue);
+    //NSLog(@"inhale percentOfmax %f", percentOfmax);
     //NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
 
     //if inhale is on, update progress bar
@@ -671,10 +675,10 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         [self.thisdelegate updateProgressBarDG:percentageValue];
     }
     
-    if (percentOfmax >= _currentInhaleValue && _reverseMode == NO){     ///added && _disallowNextInhale == false
+    if (percentOfmax >= calibratedInhaleVal && _reverseMode == NO){     ///added && _disallowNextInhale == false
         _disallowNextInhale = true;
         [self recievedBlow:@"Inhale"];
-    } else if (percentOfmax >= _currentExhaleValue && _bird.physicsBody.affectedByGravity == NO){
+    } else if (percentOfmax >= calibratedInhaleVal && _bird.physicsBody.affectedByGravity == NO){
         _disallowNextExhale = true;
         [self recievedBlow:@"Inhale"];
     }
@@ -682,29 +686,31 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)btleManager:(BTLEManager*)manager exhaleWithValue:(float)percentOfmax
 {
+    float calibratedExhaleVal = _currentExhaleValue*.4;
+   // NSLog(@"old exhale val : %f", _currentExhaleValue);
+   // NSLog(@"new exhale val : %f", calibratedExhaleVal);
+    
     if (percentOfmax < _lowestExhaleValue){ _lowestExhaleValue = percentOfmax; }
     
     if (percentOfmax < (_lowestExhaleValue + 0.01)){ [self.thisdelegate  updateProgressBarDG:0];}
     
-    float calibratedExhaleVal = percentOfmax;
-    float percentageValue = calibratedExhaleVal /_currentExhaleValue;
+    float percentageValue = percentOfmax/calibratedExhaleVal;
     
     if (_reverseMode == YES || _bird.physicsBody.affectedByGravity == NO){
         [self.thisdelegate  updateProgressBarDG:percentageValue];
     }
     
-    if (percentOfmax <= _currentExhaleValue){
+    if (percentOfmax <= calibratedExhaleVal){
         _disallowNextExhale = false;
     }
     
-    NSLog(@"percentageValue %f", percentageValue);
-    NSLog(@"percentOfmax %f", percentOfmax);
-    NSLog(@"_currentExhaleValue %f", _currentExhaleValue);
+    NSLog(@"exhale percentageValue %f", percentageValue);
+   // NSLog(@"exhale percentOfmax %f", percentOfmax);
     
-    if (percentOfmax >= _currentExhaleValue && _reverseMode == YES){
+    if (percentOfmax >= calibratedExhaleVal && _reverseMode == YES){
         _disallowNextExhale = true;
         [self recievedBlow:@"Exhale"];
-    }else if (percentOfmax >= _currentExhaleValue && _bird.physicsBody.affectedByGravity == NO){
+    }else if (percentOfmax >= calibratedExhaleVal && _bird.physicsBody.affectedByGravity == NO){
         _disallowNextExhale = true;
         [self recievedBlow:@"Exhale"];
     }
