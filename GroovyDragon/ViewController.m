@@ -34,8 +34,10 @@ NSUserDefaults * userDefaults ;
     int currOrient = [[UIDevice currentDevice] orientation];
     CGSize mysize = skView.bounds.size;
     
+    NSLog(@"LOADED ORIENTATION: %d", currOrient);
+    
     //load scene based on orientation
-    if (currOrient == 1 || currOrient == 2){
+    if (currOrient == 1 || currOrient == 2  || currOrient == 5){
          mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
         NSLog(@"inverting mysize");
         NSLog(@"curr width %f",mysize.width);
@@ -96,6 +98,7 @@ NSUserDefaults * userDefaults ;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+
     return NO; //ADDED
 }
 
@@ -105,6 +108,8 @@ NSUserDefaults * userDefaults ;
 
 -(BOOL)shouldAutorotate
 {
+    int currOrient = [[UIDevice currentDevice] orientation]; //3 LS
+    NSLog(@"NEW ORIENTATION inside: %d", currOrient);
     return YES;
 }
 

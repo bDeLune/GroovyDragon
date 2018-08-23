@@ -652,7 +652,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
 
 -(void)btleManager:(BTLEManager*)manager inhaleWithValue:(float)percentOfmax{
     
-    
     float calibratedInhaleVal = _currentInhaleValue*.5;
     //NSLog(@"old inhale val : %f", _currentInhaleValue);
     //NSLog(@"new inhale val : %f", calibratedInhaleVal);
