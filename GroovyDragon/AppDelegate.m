@@ -8,6 +8,10 @@
     // Override point for customization after application launch.
     //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft];
     
+    int currOrient = [[UIDevice currentDevice] orientation];
+    
+    NSLog(@"FINISHEDLAUNCHING ORIENTATION: %d", currOrient);
+    
     return YES;
 }
 
@@ -29,15 +33,15 @@
     return NO;
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
   //  if (condition)
   //  {
   //      return UIInterfaceOrientationPortrait;
   //  }else{
-        return UIInterfaceOrientationLandscapeRight;
+  //      return UIInterfaceOrientationLandscapeRight;
   //  }
-}
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

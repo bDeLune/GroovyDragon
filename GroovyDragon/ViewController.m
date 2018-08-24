@@ -11,6 +11,7 @@ NSMutableArray *_levelPipePositionArray;
 NSNumber *_totalLevelCount;
 bool _justloaded = true;
 NSUserDefaults * userDefaults ;
+int currOrient;
 
 - (void)viewDidLoad
 {
@@ -23,26 +24,30 @@ NSUserDefaults * userDefaults ;
 
     NSLog(@"skView.bounds.size %@", self.view);
     printf("1.skView.bounds.size = %.2f, %.2f\n", skView.bounds.size.width, skView.bounds.size.height);
- 
-    NSLog(@"Splashing");
+
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
     
     UIApplication *application = [UIApplication sharedApplication];
     [application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
                                 animated:YES];
   
-    int currOrient = [[UIDevice currentDevice] orientation];
+ 
+}
+- (void)viewWillLayoutSubviews{
+     SKView * skView = (SKView *)self.view;
+    int currOrient1 = [[UIDevice currentDevice] orientation];
     CGSize mysize = skView.bounds.size;
     
-    NSLog(@"LOADED ORIENTATION: %d", currOrient);
+    NSLog(@"ON VIEWLOAD ORIENTATION (1): %d", currOrient1);
+    NSLog(@"AUTOROTATE ORIENTATION (1): %d", currOrient);
     
     //load scene based on orientation
-    if (currOrient == 1 || currOrient == 2  || currOrient == 5){
-         mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
-        NSLog(@"inverting mysize");
-        NSLog(@"curr width %f",mysize.width);
-        NSLog(@"curr height %f",mysize.height );
-    }
+   // if (currOrient == 1 || currOrient == 2 || currOrient == 5 ){
+    //    mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
+   ////     NSLog(@"inverting mysize");
+   //     NSLog(@"curr width %f",mysize.width);
+   //     NSLog(@"curr height %f",mysize.height );
+   // }
     
     //Present the scene.
     _thisScene = [MyScene sceneWithSize:mysize];
@@ -57,7 +62,7 @@ NSUserDefaults * userDefaults ;
     }
     
     self.thresholdSlider.value = _currentInhaleValue;
-  
+    
     [skView presentScene:_thisScene];
     self.resetButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
     self.reverseButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EXHALEButton.png"]]];
@@ -68,9 +73,11 @@ NSUserDefaults * userDefaults ;
     //[self.myTopNavBar setBackgroundColor: [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0]];
     //self.myTopNavBar.barTintColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self.myTopNavBar setBackgroundImage:[UIImage new]
-                             forBarMetrics:UIBarMetricsDefault];
+                           forBarMetrics:UIBarMetricsDefault];
     self.myTopNavBar.shadowImage = [UIImage new];
     self.myTopNavBar.translucent = YES;
+    
+    
 }
 
 - (void) saveFloatToUserDefaults:(float)x forKey:(NSString *)key {
@@ -108,8 +115,8 @@ NSUserDefaults * userDefaults ;
 
 -(BOOL)shouldAutorotate
 {
-    int currOrient = [[UIDevice currentDevice] orientation]; //3 LS
-    NSLog(@"NEW ORIENTATION inside: %d", currOrient);
+    currOrient = [[UIDevice currentDevice] orientation]; //3 LS
+    NSLog(@"AUTOROTATE: %d", currOrient);
     return YES;
 }
 
