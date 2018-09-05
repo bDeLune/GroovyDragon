@@ -20,16 +20,16 @@ int currOrient;
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = NO;
     skView.showsNodeCount = NO;
-    self.myTopNavBar.clipsToBounds = YES;
+    self.myTopNavBar.clipsToBounds = NO;
 
     NSLog(@"skView.bounds.size %@", self.view);
     printf("1.skView.bounds.size = %.2f, %.2f\n", skView.bounds.size.width, skView.bounds.size.height);
 
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
     
-    UIApplication *application = [UIApplication sharedApplication];
-    [application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
-                                animated:YES];
+    ///UIApplication *application = [UIApplication sharedApplication]; //added
+    //[application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
+                             //   animated:YES];
   
  
 }
@@ -37,17 +37,18 @@ int currOrient;
      SKView * skView = (SKView *)self.view;
     int currOrient1 = [[UIDevice currentDevice] orientation];
     CGSize mysize = skView.bounds.size;
+
     
     NSLog(@"ON VIEWLOAD ORIENTATION (1): %d", currOrient1);
     NSLog(@"AUTOROTATE ORIENTATION (1): %d", currOrient);
-    
+
     //load scene based on orientation
-   // if (currOrient == 1 || currOrient == 2 || currOrient == 5 ){
-    //    mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
-   ////     NSLog(@"inverting mysize");
-   //     NSLog(@"curr width %f",mysize.width);
-   //     NSLog(@"curr height %f",mysize.height );
-   // }
+    if (currOrient == 1 || currOrient == 2 || currOrient == 5 ){
+        mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
+        NSLog(@"inverting mysize");
+        NSLog(@"curr width %f",mysize.width);
+        NSLog(@"curr height %f",mysize.height );
+    }
     
     //Present the scene.
     _thisScene = [MyScene sceneWithSize:mysize];
@@ -64,7 +65,22 @@ int currOrient;
     self.thresholdSlider.value = _currentInhaleValue;
     
     [skView presentScene:_thisScene];
-    self.resetButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
+    //self.resetButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
+    UIImage *buttonImageNormal = [UIImage imageNamed:@"ResetButton.png"];
+    UIImage *strechableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:6 topCapHeight:10];
+    [self.resetButton setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+    
+    ////UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    //[button addTarget:self
+          //     action:@selector(didReset:)]
+    // forControlEvents:UIControlEventTouchUpInside];
+    //button.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
+    //UIImage *buttonImageNormal = [UIImage imageNamed:@"blueButton.png"];
+    //UIImage *strechableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    //[playButton setBackgroundImage:strechableButtonImageNormal forState:UIControlStateNormal];
+    //button.frame = CGRectMake(80.0, 210.0, 360.0, 140.0);
+    //[self.myTopNavBar addSubview:button];
+
     self.reverseButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EXHALEButton.png"]]];
     self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
     self.breathProgress.progress = 0;
@@ -76,6 +92,7 @@ int currOrient;
                            forBarMetrics:UIBarMetricsDefault];
     self.myTopNavBar.shadowImage = [UIImage new];
     self.myTopNavBar.translucent = YES;
+    
     
     
 }

@@ -650,6 +650,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
 				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
@@ -677,6 +678,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
 				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GroovyDragon/btlemanager",

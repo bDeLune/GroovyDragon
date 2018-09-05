@@ -397,7 +397,6 @@ bool _definitelyConnected;
         
     }else
     {
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate btleManagerBreathStopped:self];
             });
