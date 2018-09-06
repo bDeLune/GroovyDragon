@@ -30,21 +30,16 @@ int currOrient;
     ///UIApplication *application = [UIApplication sharedApplication]; //added
     //[application setStatusBarOrientation:UIInterfaceOrientationLandscapeRight
                              //   animated:YES];
-  
- 
-}
-- (void)viewWillLayoutSubviews{
-     SKView * skView = (SKView *)self.view;
-    int currOrient1 = [[UIDevice currentDevice] orientation];
-    CGSize mysize = skView.bounds.size;
-
+    ////
     
-    NSLog(@"ON VIEWLOAD ORIENTATION (1): %d", currOrient1);
-    NSLog(@"AUTOROTATE ORIENTATION (1): %d", currOrient);
-
+    CGSize mysize = skView.bounds.size;
+    
+    NSLog(@"curr width %f",mysize.width);
+    NSLog(@"curr height %f",mysize.height );
+    
     //load scene based on orientation
     if (currOrient == 1 || currOrient == 2 || currOrient == 5 ){
-        mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
+        // mysize = CGSizeMake(skView.bounds.size.height, skView.bounds.size.width);
         NSLog(@"inverting mysize");
         NSLog(@"curr width %f",mysize.width);
         NSLog(@"curr height %f",mysize.height );
@@ -55,7 +50,13 @@ int currOrient;
     _thisScene.scaleMode = SKSceneScaleModeAspectFill;
     _thisScene.name= @"MyGameScene";
     _thisScene.thisdelegate = self;
-    
+    /////
+}
+
+- (void)viewWillLayoutSubviews{
+
+    SKView * skView = (SKView *)self.view;
+
     float _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     
     if (_currentInhaleValue < 0.1){
@@ -63,24 +64,22 @@ int currOrient;
     }
     
     self.thresholdSlider.value = _currentInhaleValue;
+
     
     [skView presentScene:_thisScene];
     //self.resetButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
     UIImage *buttonImageNormal = [UIImage imageNamed:@"ResetButton.png"];
     UIImage *strechableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:6 topCapHeight:10];
-    [self.resetButton setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
-    
-    ////UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[button addTarget:self
-          //     action:@selector(didReset:)]
-    // forControlEvents:UIControlEventTouchUpInside];
-    //button.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResetButton.png"]]];
-    //UIImage *buttonImageNormal = [UIImage imageNamed:@"blueButton.png"];
-    //UIImage *strechableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-    //[playButton setBackgroundImage:strechableButtonImageNormal forState:UIControlStateNormal];
-    //button.frame = CGRectMake(80.0, 210.0, 360.0, 140.0);
-    //[self.myTopNavBar addSubview:button];
+    [self.resetButton setBackgroundImage:strechableButtonImageNormal forState:UIControlStateNormal];
 
+    
+    UIImage *image = [UIImage imageNamed:@"ResetButton.png"];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    [button setImage:image forState:UIControlStateNormal];
+    //[button addTarget:self action:@selector(transitionToAddFriends) forControlEvents:UIControlEventTouchUpInside];
+    //UIBarButtonItem *BarButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    ///self.navigationItem.rightBarButtonItem = BarButton;
+    
     self.reverseButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EXHALEButton.png"]]];
     self.gravityButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"GravityButton-ON.png"]]];
     self.breathProgress.progress = 0;
@@ -92,9 +91,6 @@ int currOrient;
                            forBarMetrics:UIBarMetricsDefault];
     self.myTopNavBar.shadowImage = [UIImage new];
     self.myTopNavBar.translucent = YES;
-    
-    
-    
 }
 
 - (void) saveFloatToUserDefaults:(float)x forKey:(NSString *)key {
