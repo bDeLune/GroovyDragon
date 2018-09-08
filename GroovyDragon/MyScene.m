@@ -152,17 +152,20 @@ static NSInteger const kVerticalPipeGap = 100;
     _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
     
+    NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
+    NSLog(@"_currentExhaleValue %f", _currentExhaleValue);
+    
     //Set threshold level value///
-    if (_currentInhaleValue < 0.1){
+    if (!(_currentInhaleValue >= 0.00 && _currentInhaleValue <= 1.00)){
         _currentInhaleValue = .50;
-        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .15");
+        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .50");
     }else{
         NSLog(@"INHALE VALUE FOUND - SET TO %f", _currentInhaleValue);
     }
     
-    if (_currentExhaleValue < 0.1){
-        _currentExhaleValue = .5;
-        NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
+    if (!(_currentExhaleValue >= 0.00 && _currentExhaleValue <= 1.00)){
+        _currentExhaleValue = .50;
+        NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .50");
     }else{
         NSLog(@"EXHALE VALUE FOUND - SET TO %f", _currentExhaleValue);
     }
@@ -250,12 +253,18 @@ static NSInteger const kVerticalPipeGap = 100;
     
     [self.thisdelegate passbackSliderValueDG:_currentExhaleValue];
     [self.thisdelegate changeThresholdSliderValue:_currentExhaleValue];
+
 }
 
 
 -(void) firstBlow {
     
     NSLog(@"Very first blow - starting pipe spawn");
+    
+    //NSString *AppDomain = [[NSBundle mainBundle] bundleIdentifier];
+   /// [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:AppDomain];
+   /// NSLog(@"removed defaults");
+    
     levelInformation = [self getLevels];
     NSArray *thisLevelInformation = [levelInformation objectAtIndex:_currentLevel];
     
@@ -769,6 +778,12 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         NSLog(@"Reverse mode toggled to Exhale @ %f", _currentExhaleValue);
         _bird.speed =1;
     }
+    
+    _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
+    _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
+    
+    NSLog(@"TOGGLED  SAVED _currentInhaleValue %f", _currentInhaleValue);
+    NSLog(@"TOGGLED  SAVED  _currentExhaleValue %f", _currentExhaleValue);
     
     [self.thisdelegate  updateProgressBarDG:0];
 }

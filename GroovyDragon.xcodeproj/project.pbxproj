@@ -372,7 +372,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = "Matthias Gall";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					C9633FCC18AC2AFF00F2E432 = {
 						DevelopmentTeam = 7HMHYHNLFC;
