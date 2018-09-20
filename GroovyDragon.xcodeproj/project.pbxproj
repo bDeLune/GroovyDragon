@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		711D3C571D79CCBC002AFE9F /* tower (lower tube)-EXTENDED.png in Resources */ = {isa = PBXBuildFile; fileRef = 711D3C561D79CCBC002AFE9F /* tower (lower tube)-EXTENDED.png */; };
 		711D3C591D79CEC4002AFE9F /* tower (lower tube)-EXTENDED1.png in Resources */ = {isa = PBXBuildFile; fileRef = 711D3C581D79CEC4002AFE9F /* tower (lower tube)-EXTENDED1.png */; };
-		71273AAF1D5879B40024E107 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 71273AA41D5879B40024E107 /* bluetooth.png */; };
-		71273AB01D5879B40024E107 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 71273AA41D5879B40024E107 /* bluetooth.png */; };
-		71273AB11D5879B40024E107 /* bluetoothoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71273AA51D5879B40024E107 /* bluetoothoff.png */; };
-		71273AB21D5879B40024E107 /* bluetoothoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 71273AA51D5879B40024E107 /* bluetoothoff.png */; };
 		71273AB31D5879B40024E107 /* BTLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71273AA71D5879B40024E107 /* BTLEManager.m */; };
 		71273AB41D5879B40024E107 /* BTLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71273AA71D5879B40024E107 /* BTLEManager.m */; };
 		71273AB51D5879B40024E107 /* libMelodySmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71273AA81D5879B40024E107 /* libMelodySmart.a */; };
@@ -90,8 +86,6 @@
 /* Begin PBXFileReference section */
 		711D3C561D79CCBC002AFE9F /* tower (lower tube)-EXTENDED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tower (lower tube)-EXTENDED.png"; sourceTree = "<group>"; };
 		711D3C581D79CEC4002AFE9F /* tower (lower tube)-EXTENDED1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tower (lower tube)-EXTENDED1.png"; sourceTree = "<group>"; };
-		71273AA41D5879B40024E107 /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
-		71273AA51D5879B40024E107 /* bluetoothoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetoothoff.png; sourceTree = "<group>"; };
 		71273AA61D5879B40024E107 /* BTLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLEManager.h; sourceTree = "<group>"; };
 		71273AA71D5879B40024E107 /* BTLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTLEManager.m; sourceTree = "<group>"; };
 		71273AA81D5879B40024E107 /* libMelodySmart.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMelodySmart.a; sourceTree = "<group>"; };
@@ -195,8 +189,6 @@
 		71273AA31D5879B40024E107 /* btlemanager */ = {
 			isa = PBXGroup;
 			children = (
-				71273AA41D5879B40024E107 /* bluetooth.png */,
-				71273AA51D5879B40024E107 /* bluetoothoff.png */,
 				71273AA61D5879B40024E107 /* BTLEManager.h */,
 				71273AA71D5879B40024E107 /* BTLEManager.m */,
 				71273AA81D5879B40024E107 /* libMelodySmart.a */,
@@ -421,7 +413,6 @@
 				C963401718AC39DD00F2E432 /* Skyline.png in Resources */,
 				71273ABB1D58DEFF0024E107 /* BlueToothConnected.png in Resources */,
 				71AC2D431D7D6BA2009B193D /* GroovyDragonAppIcon167x167.png in Resources */,
-				71273AB11D5879B40024E107 /* bluetoothoff.png in Resources */,
 				C9633FF318AC2B0000F2E432 /* Images.xcassets in Resources */,
 				71AC2D391D7D6BA2009B193D /* GroovyDragonAppIcon57x57.png in Resources */,
 				71AC2D411D7D6BA2009B193D /* GroovyDragonAppIcon144x144.png in Resources */,
@@ -446,7 +437,6 @@
 				719C4A011D76E65500922673 /* GroovyDragonSplashPortraitHiRes.png in Resources */,
 				71AC2D401D7D6BA2009B193D /* GroovyDragonAppIcon120x120.png in Resources */,
 				71AC2D421D7D6BA2009B193D /* GroovyDragonAppIcon152x152.png in Resources */,
-				71273AAF1D5879B40024E107 /* bluetooth.png in Resources */,
 				C9633FE918AC2AFF00F2E432 /* Main_iPad.storyboard in Resources */,
 				71AC2D3D1D7D6BA2009B193D /* GroovyDragonAppIcon80x80.png in Resources */,
 				717AFC561D74510000E907ED /* Flag (upper tube).png in Resources */,
@@ -470,9 +460,7 @@
 			files = (
 				71273ABC1D58DEFF0024E107 /* BlueToothConnected.png in Resources */,
 				C963400418AC2B0000F2E432 /* InfoPlist.strings in Resources */,
-				71273AB21D5879B40024E107 /* bluetoothoff.png in Resources */,
 				71273ABE1D58DEFF0024E107 /* BlueToothDisconnected.png in Resources */,
-				71273AB01D5879B40024E107 /* bluetooth.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +576,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "8416bb33-8795-4aca-b39f-3832f2e4087a";
 				SDKROOT = iphoneos;
@@ -629,7 +617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				PROVISIONING_PROFILE = "8416bb33-8795-4aca-b39f-3832f2e4087a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -650,7 +638,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
 				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
@@ -678,7 +666,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GroovyDragon/GroovyDragon-Prefix.pch";
 				INFOPLIST_FILE = "GroovyDragon/GroovyDragon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GroovyDragon/btlemanager",
