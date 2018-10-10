@@ -29,8 +29,8 @@
     NSMutableArray* levelInformation;
     BOOL _disallowNextExhale;
     BOOL _disallowNextInhale;
-    float _lowestInhaleValue;
-    float _lowestExhaleValue;
+    double _lowestInhaleValue;
+    double _lowestExhaleValue;
     CGFloat _currentInhaleValue;
     CGFloat _currentExhaleValue;
     bool _exhaleTriggerToggle;
@@ -62,8 +62,8 @@ static NSInteger const kVerticalPipeGap = 100;
         
         _disallowNextExhale = false;
         _disallowNextInhale = false;
-        _lowestInhaleValue = 1;
-        _lowestExhaleValue = 1;
+        _lowestInhaleValue = 0.002;
+        _lowestExhaleValue = 0.002;
         
         firstBlow = true;
         _justStarted = true;
@@ -664,8 +664,17 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     float calibratedInhaleVal = _currentInhaleValue*.5;
     //NSLog(@"old inhale val : %f", _currentInhaleValue);
     //NSLog(@"new inhale val : %f", calibratedInhaleVal);
-
-    if (percentOfmax < _lowestInhaleValue){ _lowestInhaleValue = percentOfmax;}
+   NSLog(@"inhale percentageValue %f", percentOfmax);
+    double percentAsDouble = (double)percentOfmax;
+    NSLog(@"percentAsDouble %f", percentAsDouble);
+    NSLog(@"_lowestInhaleValue %f", _lowestInhaleValue);
+    NSLog(@"_lowestInhaleValue %d", percentAsDouble < _lowestInhaleValue);
+    
+    if (percentAsDouble < _lowestInhaleValue){
+        //_lowestInhaleValue = percentOfmax;
+        NSLog(@"IGNORE %f", percentOfmax);
+        return;
+    }
     
     if (percentOfmax > (_lowestInhaleValue + 0.03)){ [self.thisdelegate  updateProgressBarDG:0];}
     
@@ -674,7 +683,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     
     float percentageValue = percentOfmax/calibratedInhaleVal;
     
-    NSLog(@"inhale percentageValue %f", percentageValue);
+ 
     //NSLog(@"inhale percentOfmax %f", percentOfmax);
     //NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
 
@@ -697,8 +706,18 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     float calibratedExhaleVal = _currentExhaleValue*.4;
    // NSLog(@"old exhale val : %f", _currentExhaleValue);
    // NSLog(@"new exhale val : %f", calibratedExhaleVal);
-    
-    if (percentOfmax < _lowestExhaleValue){ _lowestExhaleValue = percentOfmax; }
+
+    double percentAsDouble = (double)percentOfmax;
+    NSLog(@"exhale percentAsDouble %f", percentAsDouble);
+    NSLog(@"exhale _lowestExhaleValue %f", _lowestExhaleValue);
+    NSLog(@"_lowestInhaleValue %d", percentAsDouble < _lowestExhaleValue);
+   
+    if (percentAsDouble < _lowestExhaleValue){
+       // _lowestExhaleValue = percentOfmax;
+        NSLog(@"IGNORE %f", percentOfmax);
+        return;
+        
+    }
     
     if (percentOfmax < (_lowestExhaleValue + 0.01)){ [self.thisdelegate  updateProgressBarDG:0];}
     
@@ -712,7 +731,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         _disallowNextExhale = false;
     }
     
-    NSLog(@"exhale percentageValue %f", percentageValue);
+  
    // NSLog(@"exhale percentOfmax %f", percentOfmax);
     
     if (percentOfmax >= calibratedExhaleVal && _reverseMode == YES){
