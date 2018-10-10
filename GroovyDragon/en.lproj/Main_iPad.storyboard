@@ -77,7 +77,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" tag="9" image="ResetButton.png" width="10" style="done" id="05b-7g-h3Z">
                                             <inset key="imageInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
-                                            <button key="customView" autoresizesSubviews="NO" opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6IS-le-JCO">
+                                            <button key="customView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6IS-le-JCO">
                                                 <rect key="frame" x="640" y="0.0" width="108" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>

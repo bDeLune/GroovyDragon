@@ -29,8 +29,8 @@
     NSMutableArray* levelInformation;
     BOOL _disallowNextExhale;
     BOOL _disallowNextInhale;
-    float _lowestInhaleValue;
-    float _lowestExhaleValue;
+    double _lowestInhaleValue;
+    double _lowestExhaleValue;
     CGFloat _currentInhaleValue;
     CGFloat _currentExhaleValue;
     bool _exhaleTriggerToggle;
@@ -62,8 +62,8 @@ static NSInteger const kVerticalPipeGap = 100;
         
         _disallowNextExhale = false;
         _disallowNextInhale = false;
-        _lowestInhaleValue = 1;
-        _lowestExhaleValue = 1;
+        _lowestInhaleValue = 0.002;
+        _lowestExhaleValue = 0.002;
         
         firstBlow = true;
         _justStarted = true;
@@ -152,17 +152,20 @@ static NSInteger const kVerticalPipeGap = 100;
     _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
     _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
     
+    NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
+    NSLog(@"_currentExhaleValue %f", _currentExhaleValue);
+    
     //Set threshold level value///
-    if (_currentInhaleValue < 0.1){
+    if (!(_currentInhaleValue >= 0.00 && _currentInhaleValue <= 1.00)){
         _currentInhaleValue = .50;
-        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .15");
+        NSLog(@"NO PREVIOUS INHALE VALUE FOUND - SET TO .50");
     }else{
         NSLog(@"INHALE VALUE FOUND - SET TO %f", _currentInhaleValue);
     }
     
-    if (_currentExhaleValue < 0.1){
-        _currentExhaleValue = .5;
-        NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .15");
+    if (!(_currentExhaleValue >= 0.00 && _currentExhaleValue <= 1.00)){
+        _currentExhaleValue = .50;
+        NSLog(@"NO PREVIOUS EXHALE VALUE FOUND - SET TO .50");
     }else{
         NSLog(@"EXHALE VALUE FOUND - SET TO %f", _currentExhaleValue);
     }
@@ -250,12 +253,18 @@ static NSInteger const kVerticalPipeGap = 100;
     
     [self.thisdelegate passbackSliderValueDG:_currentExhaleValue];
     [self.thisdelegate changeThresholdSliderValue:_currentExhaleValue];
+
 }
 
 
 -(void) firstBlow {
     
     NSLog(@"Very first blow - starting pipe spawn");
+    
+    //NSString *AppDomain = [[NSBundle mainBundle] bundleIdentifier];
+   /// [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:AppDomain];
+   /// NSLog(@"removed defaults");
+    
     levelInformation = [self getLevels];
     NSArray *thisLevelInformation = [levelInformation objectAtIndex:_currentLevel];
     
@@ -655,8 +664,17 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     float calibratedInhaleVal = _currentInhaleValue*.5;
     //NSLog(@"old inhale val : %f", _currentInhaleValue);
     //NSLog(@"new inhale val : %f", calibratedInhaleVal);
-
-    if (percentOfmax < _lowestInhaleValue){ _lowestInhaleValue = percentOfmax;}
+   NSLog(@"inhale percentageValue %f", percentOfmax);
+    double percentAsDouble = (double)percentOfmax;
+    NSLog(@"percentAsDouble %f", percentAsDouble);
+    NSLog(@"_lowestInhaleValue %f", _lowestInhaleValue);
+    NSLog(@"_lowestInhaleValue %d", percentAsDouble < _lowestInhaleValue);
+    
+    if (percentAsDouble < _lowestInhaleValue){
+        //_lowestInhaleValue = percentOfmax;
+        NSLog(@"IGNORE %f", percentOfmax);
+        return;
+    }
     
     if (percentOfmax > (_lowestInhaleValue + 0.03)){ [self.thisdelegate  updateProgressBarDG:0];}
     
@@ -665,7 +683,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     
     float percentageValue = percentOfmax/calibratedInhaleVal;
     
-    NSLog(@"inhale percentageValue %f", percentageValue);
+ 
     //NSLog(@"inhale percentOfmax %f", percentOfmax);
     //NSLog(@"_currentInhaleValue %f", _currentInhaleValue);
 
@@ -688,8 +706,18 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     float calibratedExhaleVal = _currentExhaleValue*.4;
    // NSLog(@"old exhale val : %f", _currentExhaleValue);
    // NSLog(@"new exhale val : %f", calibratedExhaleVal);
-    
-    if (percentOfmax < _lowestExhaleValue){ _lowestExhaleValue = percentOfmax; }
+
+    double percentAsDouble = (double)percentOfmax;
+    NSLog(@"exhale percentAsDouble %f", percentAsDouble);
+    NSLog(@"exhale _lowestExhaleValue %f", _lowestExhaleValue);
+    NSLog(@"_lowestInhaleValue %d", percentAsDouble < _lowestExhaleValue);
+   
+    if (percentAsDouble < _lowestExhaleValue){
+       // _lowestExhaleValue = percentOfmax;
+        NSLog(@"IGNORE %f", percentOfmax);
+        return;
+        
+    }
     
     if (percentOfmax < (_lowestExhaleValue + 0.01)){ [self.thisdelegate  updateProgressBarDG:0];}
     
@@ -703,7 +731,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         _disallowNextExhale = false;
     }
     
-    NSLog(@"exhale percentageValue %f", percentageValue);
+  
    // NSLog(@"exhale percentOfmax %f", percentOfmax);
     
     if (percentOfmax >= calibratedExhaleVal && _reverseMode == YES){
@@ -769,6 +797,12 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         NSLog(@"Reverse mode toggled to Exhale @ %f", _currentExhaleValue);
         _bird.speed =1;
     }
+    
+    _currentInhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentInhaleValue"];
+    _currentExhaleValue = [self loadFloatFromUserDefaultsForKey:@"_currentExhaleValue"];
+    
+    NSLog(@"TOGGLED  SAVED _currentInhaleValue %f", _currentInhaleValue);
+    NSLog(@"TOGGLED  SAVED  _currentExhaleValue %f", _currentExhaleValue);
     
     [self.thisdelegate  updateProgressBarDG:0];
 }
