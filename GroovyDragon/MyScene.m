@@ -730,8 +730,6 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     if (percentOfmax <= calibratedExhaleVal){
         _disallowNextExhale = false;
     }
-    
-  
    // NSLog(@"exhale percentOfmax %f", percentOfmax);
     
     if (percentOfmax >= calibratedExhaleVal && _reverseMode == YES){
@@ -767,6 +765,8 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
         NSLog(@"Bird no longer affected by gravity");
         [self.thisdelegate  updateGravityButtonDG: NO];
         _bird.speed =1;
+        _bird.physicsBody.velocity = CGVectorMake(0, 0);
+        [_bird.physicsBody applyImpulse:CGVectorMake(0, 0)];
     }else if (_affectedByG == false){
         _bird.physicsBody.affectedByGravity = YES;
         _affectedByG = true;
